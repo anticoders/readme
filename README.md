@@ -60,6 +60,13 @@ or so.
 Tool recommendation: [SourceTree](http://sourcetreeapp.com/).
 
 
+Working in a branch
+-------------------
+
+When you do a large work in a branch make sure to pull the current version from `dev` at least once a day.
+This will prevent enormous merge conflicts.
+
+
 
 
 &nbsp;

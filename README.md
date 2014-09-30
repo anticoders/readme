@@ -106,7 +106,33 @@ Correct:
     var meaningOfLife = 42;
     var iAteBanana = true;
     
+  
+Css classes
+-----------
+
+- Never use the same class for styling and behavior (JS events or data storage).
+- Behavior classes should be prefixed by double underscore, i.e. `__submit`.
+- When designing complex components, use single underscore for nested styling classes, i.e. `_title`.
+
+
+Logging
+-------
+
+Whenever you use `console.log` or `console.error` for whatever reasons, **NEVER** use it without a label.
+Even if it's a temporary debugging that you intend to remove in two minutes.
+Similarly, `console.trace` and similar methods should be accompanied by a log with a label.
+
+Wrong:
+
+    console.log(something.length);
     
+Correct:
+
+    console.log("SLen", something.length);
+    
+If you've got several logs one after another, it is allowed to label only the first one.
+
+
 Route data
 ----------
 
@@ -158,6 +184,32 @@ Correct:
     
 
 
+
+&nbsp;
+
+&nbsp;
+
+
+
+
+Favorite packages
+=================
+
+Some problems have multiple solutions available in the environment.
+In such cases it is a good idea to find the best solution and use it consistently across all our projects.
+Here are a few recipes we already have. This list will grow in time.
+
+
+Modal dialogs
+-------------
+
+    anti:modals
+    
+Forms
+-----
+
+    aldeed:autoform
+ 
 
 
 

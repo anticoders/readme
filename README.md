@@ -54,8 +54,8 @@ Commiting
 The importance of commiting **often** and **pushing** it to the central repo cannot be overstated.
 **IT IS VITAL** THAT YOU COMMIT AND PUSH YOUR WORK.
 
-Seriously, find a tool that allows you to commit and push in an instant and do the commit every ten minutes
-or more often.
+Seriously, find a tool that allows you to commit and push in an instant and do the commit every **ten minutes**
+or so.
 
 Tool recommendation: [SourceTree](http://sourcetreeapp.com/).
 

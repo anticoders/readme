@@ -17,6 +17,13 @@ so please:
 
 
 
+&nbsp;
+
+&nbsp;
+
+
+
+
 Git practices
 =============
 
@@ -55,10 +62,104 @@ Tool recommendation: [SourceTree](http://sourcetreeapp.com/).
 
 
 
+&nbsp;
+
+&nbsp;
+
+
+
+
 Code practices
 ==============
 
-[Meteor Style Guide](https://github.com/meteor/meteor/wiki/Meteor-Style-Guide)
+
+Meteor Style Guide
+------------------
+
+Core Team has a nice document describing the basic style and best practices
+for coding in Javascript for Meteor. Read it here:
+[Meteor Style Guide](https://github.com/meteor/meteor/wiki/Meteor-Style-Guide).
+Make sure you understand the whitespace conventions and Javascript pitfalls.
+
+
+Whitespace
+----------
+
+Standard indentation in Javascript is two spaces. Using tabs is unforgivable. Proper whitespacing
+is an indicator of your experience. There is no excuse for `}else{`.
+
+
+Variable definition
+-------------------
+
+Rule of thumb: one `var` keyword for one variable.
+
+Wrong:
+
+    var users = [],
+        meaningOfLife = 41,
+        iAteBanana = true;
+        
+Correct:
+
+    var users = [];
+    var meaningOfLife = 42;
+    var iAteBanana = true;
+    
+    
+Route data
+----------
+
+Route data function should always return a dictionary. Otherwise it is difficult to extend it later.
+
+Wrong:
+
+    data: function() {
+      return Fruits.find({color: 'yellow'});
+    },
+    
+Correct:
+ 
+    data: function() {
+      return {
+        fruits: Fruits.find({color: 'yellow'});
+      };
+    },
+
+
+Method return
+-------------
+
+The same rule applies for method results, for the same reason.
+
+Wrong:
+
+    Meteor.methods({
+    
+      'uploadFile': function () {
+        ...
+        return true;
+      },
+    
+    });
+    
+Correct:
+
+    Meteor.methods({
+    
+      'uploadFile': function () {
+        ...
+        return {
+          success: true,
+        };
+      },
+    
+    });
+    
+
+
+
+
 
 
 

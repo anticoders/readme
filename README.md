@@ -1,7 +1,16 @@
-Basics
-======
+Intro
+=====
 
-Readme and best practices for Anticoders
+
+Maintaining good code quality and sharing common view on best practices is very important for our clients.
+This file is a collection of methods and practices that define the Anticoders style.
+It is really important that you are familiar with them and that you agree with them,
+so please:
+
+- Read the file carefully,
+- If you find something you don't agree with, or if there is something you would like to add, discuss it!
+  It is really **important** to share this common style.
+- From time to time check the file for updates.
 
 
 

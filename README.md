@@ -11,6 +11,9 @@ so please:
 - If you find something you don't agree with, or if there is something you would like to add, discuss it!
   It is really **important** to share this common style.
 - From time to time check the file for updates.
+  [History tool](https://github.com/anticoders/readme/commits/master/README.md)
+  is handy to keep up with the recent version.
+
 
 
 
@@ -51,6 +54,11 @@ Tool recommendation: [SourceTree](http://sourcetreeapp.com/).
 
 
 
+
+Code practices
+==============
+
+[Meteor Style Guide](https://github.com/meteor/meteor/wiki/Meteor-Style-Guide)
 
 
 

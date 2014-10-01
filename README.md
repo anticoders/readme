@@ -119,7 +119,11 @@ Css classes
 
 - Never use the same class for styling and behavior (JS events or data storage).
 - Behavior classes should be prefixed by double underscore, i.e. `__submit`.
-- When designing complex components, use single underscore for nested styling classes, i.e. `_title`.
+- When designing complex components, use single underscore for nested styling classes, i.e.
+    
+        <div class="box">
+          <span class="_title"></span>
+        </div>
 
 
 Logging

@@ -189,6 +189,16 @@ Correct:
     
     });
     
+    
+Session
+-------
+
+Rule of thumb: do not use `Session`.
+
+This is not an iron rule, `Session` can be sometimes used temporarily when we're not yet sure of a best pattern
+to solve a certain problem and hacking with `Session` will prevent wasting time for a solution that we might
+later purge. However, it should be always perceived as an ugly hack and purged as soon as possible.
+
 
 
 

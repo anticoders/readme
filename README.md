@@ -2,6 +2,8 @@ Intro
 =====
 
 
+> Always code as if the person who ends up maintaining your code is a violent psychopath who knows where you live[.](http://c2.com/cgi/wiki?CodeForTheMaintainer)
+
 Maintaining good code quality and sharing common view on best practices is very important for our clients.
 This file is a collection of methods and practices that define the Anticoders style.
 It is really important that you are familiar with them and that you agree with them,

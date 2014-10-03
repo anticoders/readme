@@ -28,6 +28,27 @@ Git practices
 =============
 
 
+Commiting
+---------
+
+The importance of commiting **often** and **pushing** it to the central repo cannot be overstated.
+**IT IS VITAL** THAT YOU COMMIT AND PUSH YOUR WORK.
+
+Seriously, find a tool that allows you to commit and push in an instant and do the commit every **ten minutes**
+or so.
+
+Tool recommendation: [SourceTree](http://sourcetreeapp.com/).
+
+
+Pulling
+-------
+
+When you do a large work in a branch make sure to pull the current version from `dev` at least once a day.
+This will prevent enormous merge conflicts.
+
+Start your day by pulling the recent version.
+
+
 Branching
 ---------
 
@@ -45,26 +66,6 @@ The tweaks:
   We can deal with it.
 - For small projects like packages and for projects that are not yet in production the difference between `master`
   and `dev` is not so important, so we might use the `master` in the role of `dev` for some time.
-
-
-
-Commiting
----------
-
-The importance of commiting **often** and **pushing** it to the central repo cannot be overstated.
-**IT IS VITAL** THAT YOU COMMIT AND PUSH YOUR WORK.
-
-Seriously, find a tool that allows you to commit and push in an instant and do the commit every **ten minutes**
-or so.
-
-Tool recommendation: [SourceTree](http://sourcetreeapp.com/).
-
-
-Working in a branch
--------------------
-
-When you do a large work in a branch make sure to pull the current version from `dev` at least once a day.
-This will prevent enormous merge conflicts.
 
 
 

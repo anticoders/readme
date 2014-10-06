@@ -136,6 +136,28 @@ You should always use Egyptian brackets:
     }
     
 
+Colon placement
+---------------
+
+The right pattern:
+
+    bla,
+    bla,
+    bla,
+
+The wrong pattern (unless it's `.json`):
+
+    bla,
+    bla,
+    bla
+
+The "What's wrong with you?" pattern:
+
+    bla
+    , bla
+    , bla
+
+
 Variable definition
 -------------------
 
@@ -154,6 +176,14 @@ Correct:
     var iAteBanana = true;
     
   
+Variable naming
+---------------
+
+Global objects (collections, route controllers, namespaces) start with upper case letter. Everything else start with lower case letter. All names are camelCased.
+
+Collection names should be in plural.
+
+
 Css classes
 -----------
 
@@ -182,6 +212,46 @@ Correct:
     console.log("SLen", something.length);
     
 If you've got several logs one after another, it is allowed to label only the first one.
+
+
+Empty queries
+-------------
+
+This is a common beginner pitfall with serious consequences: in route controllers you can decide
+which data channels to subscribe to, so you can assume you know what data is in minimongo collection
+and fetch it all. **Do not do this.** Example:
+
+    MyBlogArticlesListController = RouteController.extend({
+      
+      onBeforeAction: function() {
+        this.subscribe('myBlogArticles');
+      },
+      
+      data: function() {
+        return {
+          articles: BlogArticles.find({});
+        };
+      },
+      
+    });
+
+**Always** include the full exact intended query, even if client's collection contains only the data you want.
+
+    MyBlogArticlesListController = RouteController.extend({
+      
+      onBeforeAction: function() {
+        this.subscribe('myBlogArticles');
+      },
+      
+      data: function() {
+        return {
+          articles: BlogArticles.find({
+            userId: Meteor.userId(),
+          });
+        };
+      },
+      
+    });
 
 
 Route data

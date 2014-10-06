@@ -31,6 +31,7 @@ Index
 
 
 - [Git practices](#git-practices)
+- [Code style](#code-style)
 - [Code practices](#code-practices)
 - [App structure](#app-structure)
 - [Favorite packages](#favorite-packages)
@@ -99,8 +100,8 @@ The tweaks:
 
 
 
-Code practices
-==============
+Code style
+==========
 
 
 Meteor Style Guide
@@ -195,6 +196,18 @@ Css classes
           <span class="_title"></span>
         </div>
 
+
+
+
+&nbsp;
+
+&nbsp;
+
+
+
+
+Code practices
+==============
 
 Logging
 -------

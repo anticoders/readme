@@ -333,6 +333,33 @@ Triple Repetition Rule
 The Triple Repetition Rule states that the code should be refactored to avoid repetition when a triple repetition occurs and **no sooner**. An important corollary for purists: it is perfectly OK to have two files 120-lines each that differ with nothing but one identifier.
 
 
+Regexes
+-------
+
+Real-life example
+
+
+    id = @text.split("http://www.youtube.com/watch?v=")[1]
+    if id is undefined
+      id = @text.split("https://www.youtube.com/watch?v=")[1]
+      if id is undefined
+        id = @text.split("http://youtube.com/watch?v=")[1]
+        if id is undefined
+          id = @text.split("https://youtube.com/watch?v=")[1]
+    id
+
+The worst thing about this code is not that it's ugly, but one needs more than
+a few seconds to understand what is going on.
+
+Use regexes where applicable. If you don't know regexes yet:
+
+- Ask a senior developer to write the regex.
+- Learn them!
+
+Recommended source: [Regular Expressions Cookbook](http://shop.oreilly.com/product/9780596520694.do).
+
+
+
 
 &nbsp;
 

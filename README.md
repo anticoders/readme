@@ -246,6 +246,7 @@ App structure
 - `client`
   - `app`
     - `helpers`
+  - `components 
   - `vievs`
 - `public`
   - `files`

@@ -359,6 +359,27 @@ Use regexes where applicable. If you don't know regexes yet:
 Recommended source: [Regular Expressions Cookbook](http://shop.oreilly.com/product/9780596520694.do).
 
 
+Global variables
+----------------
+
+Real-life example:
+
+    // Global function to return the number of panels in a System ...
+    PanelQty = function (systemId) {
+      ...
+      return PanelGroups.find({ systemId: systemId }).map(...);
+    };
+
+The whole app from which this was taken had around 200 methods like that and nothing else.
+I hope that no explanation is needed here.
+
+In any case, hard rules:
+
+- Collections and RouteControllers are global by design, so they're global.
+- Besides that, **only** dictionaries allowed!
+- As few as possible.
+- Naming: CapitalCamelCase.
+
 
 
 &nbsp;

@@ -26,6 +26,26 @@ so please:
 
 
 
+Index
+======
+
+
+- [Git practices](#git-practices)
+- [Code practices](#code-practices)
+- [App structure](#app-structure)
+- [Favorite packages](#favorite-packages)
+
+
+
+
+
+&nbsp;
+
+&nbsp;
+
+
+
+
 Git practices
 =============
 
@@ -205,6 +225,52 @@ Rule of thumb: do not use `Session`.
 This is not an iron rule, `Session` can be sometimes used temporarily when we're not yet sure of a best pattern
 to solve a certain problem and hacking with `Session` will prevent wasting time for a solution that we might
 later purge. However, it should be always perceived as an ugly hack and purged as soon as possible.
+
+
+
+
+&nbsp;
+
+&nbsp;
+
+
+
+
+App structure
+=============
+
+
+- `both`
+  - `collections`
+  - `routes.js`
+- `client`
+  - `app`
+    - `helpers`
+  - `vievs`
+- `public`
+  - `files`
+- `server`
+  - `collections`
+  - `methods`
+
+
+
+Files in `/both/collections` contain collection definition, schema, class and instance methods and enums.
+
+Files in `/server/collections` contain allow / deny rules and publications.
+
+Route controllers are placed in `/views` folder, in the same place where their respective view `.html` and `.js` files. Controller file names begin with an underscore, i.e. `_blogArticleListController.js`.
+
+All static files should be placed in `/public/files`, so that their path begin with `/files`. Large assets in grown-up applications should be placed on S3.
+
+We use `camelCase` converter for route templates and `upperCamelCase` for route controllers.
+
+    Router.configure({
+      templateNameConverter:          'camelCase',
+      routeControllerNameConverter:   'upperCamelCase',
+    });
+
+In most apps we have global `Helpers` object to which we add UI helpers.
 
 
 

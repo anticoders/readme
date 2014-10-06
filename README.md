@@ -403,7 +403,7 @@ Basic folders
   - `app`
     - `helpers`
   - `components 
-  - `vievs`
+  - `views`
 - `public`
   - `files`
 - `server`

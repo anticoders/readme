@@ -119,6 +119,23 @@ Standard indentation in Javascript is two spaces. Using tabs is unforgivable. Pr
 is an indicator of your experience. There is no excuse for `}else{`.
 
 
+Brackets
+--------
+
+Luckily, in JS there is no place for debate on correct bracket placement, as this thing is simply an error:
+
+    while(answer < 42)
+    {
+      ...
+    }
+    
+You should always use Egyptian brackets:
+
+    while(answer < 42) {
+      ...
+    }
+    
+
 Variable definition
 -------------------
 

@@ -227,6 +227,11 @@ to solve a certain problem and hacking with `Session` will prevent wasting time 
 later purge. However, it should be always perceived as an ugly hack and purged as soon as possible.
 
 
+Triple Repetition Rule
+----------------------
+
+The Triple Repetition Rule states that the code should be refactored to avoid repetition when a triple repetition occurs and **no sooner**. An important corollary for purists: it is perfectly OK to have two files 120-lines each that differ with nothing but one identifier.
+
 
 
 &nbsp;
@@ -239,6 +244,9 @@ later purge. However, it should be always perceived as an ugly hack and purged a
 App structure
 =============
 
+
+Basic folders
+-------------
 
 - `both`
   - `collections`
@@ -253,7 +261,6 @@ App structure
 - `server`
   - `collections`
   - `methods`
-
 
 
 Files in `/both/collections` contain collection definition, schema, class and instance methods and enums.
@@ -273,6 +280,23 @@ We use `camelCase` converter for route templates and `upperCamelCase` for route 
 
 In most apps we have global `Helpers` object to which we add UI helpers.
 
+
+Clutter limits
+--------------
+
+There's an old rule stating that file size shouldn't exceed 100 lines. Sice whitespaces, closing brackets and comments can increase file length without adding content, we should increase the limit in JS to 200 lines, but make it a strong limit! If your file exceeds 200 lines, split it.
+
+We should limit the number of files in a folder. If your folder has more than ~12 files, and not all of them are of the same kind (like view folders), consider breaking it into subfolders.
+
+While there are no hard rules for line length, we should try to keep them under 100 characters. Most importantly, write your code in a way that increases readability. Real life example:
+
+    var textTestimonials = TextTestimonial.find({userId: this.user._id}).fetch();
+
+More readable way to write it:
+
+    var textTestimonials = TextTestimonial.find({
+      userId: this.user._id
+    }).fetch();
 
 
 

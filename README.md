@@ -4,7 +4,7 @@ Intro
 
 > Always code as if the person who ends up maintaining your code is a violent psychopath who knows where you live[.](http://c2.com/cgi/wiki?CodeForTheMaintainer)
 
-Maintaining good code quality and sharing common view on best practices is very important for our clients.
+Maintaining good code quality and sharing a common view on best practices is very important for our clients.
 This file is a collection of methods and practices that define the Anticoders style.
 It is really important that you are familiar with them and that you agree with them,
 so please:
@@ -51,20 +51,22 @@ Git practices
 =============
 
 
-Commiting
+Do commit early, commit often
 ---------
+"If you've ever sat down for a fast and furious coding session only to realize hours later that you removed something important, you know the frustration of not being able to get it back. It can mean hours lost. Getting in the habit of regular commits has a number of benefits. First, you can go back to any previously committed version if your coding goes off-track. You can reference earlier parts of your work even if you don't need to revert to them. Best of all, it an actually have a positive impact on your code itself."
 
-The importance of commiting **often** and **pushing** it to the central repo cannot be overstated.
-**IT IS VITAL** THAT YOU COMMIT AND PUSH YOUR WORK.
+Better Code through Committing
+Just as Test-Driven Development influences us to write a larger number of shorter/simpler methods, frequent committing pushes us to think of atomic changes. Continue reading: [Don't Be Afraid of Commitment](http://www.databasically.com/2011/03/14/git-commit-early-commit-often/). 
 
-Seriously, find a tool that allows you to commit and push in an instant and do the commit every **ten minutes**
-or so.
-
-Tool recommendation: [SourceTree](http://sourcetreeapp.com/).
-
-
-Pulling
+Tool recommendations
 -------
+[SourceTree](http://sourcetreeapp.com/).
+[smartGit](http://www.syntevo.com/smartgit/).
+
+Pull to stay current, and pull-before-you-push
+-------
+
+When you pull, git will fetch commits on origin and will try to fast-forward your local commits on top of them, doing the merge. After that you can push in this way you will not generate conflicts with other updates.
 
 When you do a large work in a branch make sure to pull the current version from `dev` at least once a day.
 This will prevent enormous merge conflicts.
@@ -123,66 +125,78 @@ is an indicator of your experience. There is no excuse for `}else{`.
 Brackets
 --------
 
-Luckily, in JS there is no place for debate on correct bracket placement, as this thing is simply an error:
+Luckily, in JS there is no place for debate on correct bracket placement:
+    
+Always use Egyptian brackets:
 
+    // GOOD
+    while(answer < 42) {
+      ...
+    }
+
+    // BAD - this is an error in JavaScript
     while(answer < 42)
     {
       ...
     }
     
-You should always use Egyptian brackets:
 
-    while(answer < 42) {
-      ...
-    }
-    
-
-Colon placement
+Colon placement in JavaScript
 ---------------
 
-The right pattern:
-
+    // GOOD
     bla,
     bla,
     bla,
 
-The wrong pattern (unless it's `.json`):
-
-    bla,
-    bla,
-    bla
-
-The "What's wrong with you?" pattern:
-
+    // BAD
     bla
     , bla
     , bla
 
+    // GOOD in `.json`); BAD in JS
+    bla,
+    bla,
+    bla
 
 Variable definition
 -------------------
 
 Rule of thumb: one `var` keyword for one variable.
 
-Wrong:
+    // GOOD
+    var x = [];
+    var y = 42;
+    var z = true;
 
-    var users = [],
-        meaningOfLife = 41,
-        iAteBanana = true;
-        
-Correct:
+    // BAD
+    var x = [],
+        y = 4s,
+        z = true;
 
-    var users = [];
-    var meaningOfLife = 42;
-    var iAteBanana = true;
-    
+In the BAD example, lines 2 and 3 depend on the first line. See how a co-worker quickly added y1 and mistakenly created a global variable "z":
+
+    // BAD
+    var x = [],
+        y = 41,
+        y1 = 2;
+        z = true;
+
   
 Variable naming
 ---------------
 
-Global objects (collections, route controllers, namespaces) start with upper case letter. Everything else start with lower case letter. All names are camelCased.
+Use camelCase for all names.
 
-Collection names should be in plural.
+In the case of global objects (collections, route controllers, namespaces) start with upper case letter:
+    AdminDashboardController = BaseController.extend({...
+
+Everything else start with lower case letter:
+    var firstName = fullName[0];
+    <template name="adminReceiveItem">
+
+Collection names should be in plural:
+    Posts = new Meteor.Collection('posts');
 
 
 Css classes
@@ -216,13 +230,12 @@ Whenever you use `console.log` or `console.error` for whatever reasons, **NEVER*
 Even if it's a temporary debugging that you intend to remove in two minutes.
 Similarly, `console.trace` and similar methods should be accompanied by a log with a label.
 
-Wrong:
+    // GOOD
+    console.log("SLen", something.length);
 
+    // BAD
     console.log(something.length);
     
-Correct:
-
-    console.log("SLen", something.length);
     
 If you've got several logs one after another, it is allowed to label only the first one.
 
@@ -230,26 +243,9 @@ If you've got several logs one after another, it is allowed to label only the fi
 Empty queries
 -------------
 
-This is a common beginner pitfall with serious consequences: in route controllers you can decide
-which data channels to subscribe to, so you can assume you know what data is in minimongo collection
-and fetch it all. **Do not do this.** Example:
+Always fully qualify your queries, even if the local collection contains only the data you want.
 
-    MyBlogArticlesListController = RouteController.extend({
-      
-      onBeforeAction: function() {
-        this.subscribe('myBlogArticles');
-      },
-      
-      data: function() {
-        return {
-          articles: BlogArticles.find({});
-        };
-      },
-      
-    });
-
-**Always** include the full exact intended query, even if client's collection contains only the data you want.
-
+    // GOOD
     MyBlogArticlesListController = RouteController.extend({
       
       onBeforeAction: function() {
@@ -266,45 +262,47 @@ and fetch it all. **Do not do this.** Example:
       
     });
 
+    // BAD
+    MyBlogArticlesListController = RouteController.extend({
+        
+        onBeforeAction: function() {
+          this.subscribe('myBlogArticles');
+        },
+        
+        data: function() {
+          return {
+            articles: BlogArticles.find({});
+          };
+        },
+        
+      });
+
+The collection may include documents from other publications, or your original publication may have been modified by another developer. Fully qualify your queries (with appropriate filters/constrains) to ensure you don't accidentally expose data you didn't expect to be in the collection.
+
 
 Route data
 ----------
 
 Route data function should always return a dictionary. Otherwise it is difficult to extend it later.
-
-Wrong:
-
-    data: function() {
-      return Fruits.find({color: 'yellow'});
-    },
-    
-Correct:
- 
+      
+    // GOOD
     data: function() {
       return {
         fruits: Fruits.find({color: 'yellow'});
       };
     },
 
+    // BAD
+    data: function() {
+      return Fruits.find({color: 'yellow'});
+    },
 
 Method return
 -------------
 
 The same rule applies for method results, for the same reason.
-
-Wrong:
-
-    Meteor.methods({
     
-      'uploadFile': function () {
-        ...
-        return true;
-      },
-    
-    });
-    
-Correct:
-
+    // GOOD
     Meteor.methods({
     
       'uploadFile': function () {
@@ -315,7 +313,16 @@ Correct:
       },
     
     });
+
+    // BAD
+    Meteor.methods({
     
+      'uploadFile': function () {
+        ...
+        return true;
+      },
+    
+    });    
     
 Session
 -------
@@ -473,8 +480,5 @@ Forms
 
     aldeed:autoform
  
-
-
-
 
 

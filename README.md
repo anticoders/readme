@@ -61,6 +61,7 @@ Just as Test-Driven Development influences us to write a larger number of shorte
 Tool recommendations
 -------
 [SourceTree](http://sourcetreeapp.com/).
+
 [smartGit](http://www.syntevo.com/smartgit/).
 
 Pull to stay current, and pull-before-you-push
